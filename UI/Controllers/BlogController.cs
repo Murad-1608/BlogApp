@@ -49,7 +49,7 @@ namespace UI.Controllers
             return View(blog);
         }
 
-        [HttpPost,Authorize]
+        [HttpPost, Authorize]
         public IActionResult AddComment(Comment comment)
         {
             if (User.Identity.IsAuthenticated)
@@ -78,9 +78,12 @@ namespace UI.Controllers
             return RedirectToAction("Blogs", "Writer");
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Title = "Bloq əlavə et";
+
             List<SelectListItem> categories = (from i in categoryService.GetAll().ToList()
                                                select new SelectListItem
                                                {
@@ -99,6 +102,8 @@ namespace UI.Controllers
         [HttpPost]
         public IActionResult Add(BlogViewModel viewModel)
         {
+            ViewBag.Title = "Bloq əlavə et";
+
             if (viewModel.BlogModel.Image == null)
             {
                 ModelState.AddModelError(nameof(viewModel.BlogModel.Image), "Xahiş olunur şəkil seçin");
@@ -138,27 +143,39 @@ namespace UI.Controllers
             return View(viewModel);
         }
 
-
+        [Authorize]
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var blog = blogService.GetById(id);
-            UpdateViewModel viewModel = new UpdateViewModel()
+            ViewBag.Title = "Bloq yenilə";
+
+            try
             {
-                Id = blog.Id,
-                Title = blog.Title,
-                Content = blog.Content,
-                Image = blog.Image,
-                CategoryId = blog.CategoryId,
-                Seen = blog.Seen,
-                AppUserId = blog.AppUserId
-            };
-            return View(viewModel);
+                var blog = blogService.GetById(id);
+                UpdateViewModel viewModel = new UpdateViewModel()
+                {
+                    Id = blog.Id,
+                    Title = blog.Title,
+                    Content = blog.Content,
+                    Image = blog.Image,
+                    CategoryId = blog.CategoryId,
+                    Seen = blog.Seen,
+                    AppUserId = blog.AppUserId
+                };
+                return View(viewModel);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Writer","Blogs");
+            }
+
+
         }
 
         [HttpPost]
         public IActionResult Update(UpdateViewModel viewModel)
         {
+            ViewBag.Title = "Bloq yenilə";
 
             if (ModelState.IsValid)
             {

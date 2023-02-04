@@ -8,6 +8,7 @@ namespace Business.Abstract
         List<Blog> GetListWithCategoryByWriter(int id);
         Blog GetById(int id);
         List<Blog> GetBlogListByWriter(int writerId);
+        List<Blog> GetAll();
 
         void Update(Blog blog);
         Blog LastestBlog();

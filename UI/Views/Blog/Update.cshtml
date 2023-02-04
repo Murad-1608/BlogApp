@@ -10,7 +10,7 @@
 
                     <div class="blog_info_left_grid">
                             <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@Model.Id">
-                                <img src="~/Images/Blog/@Model.Image" class="img-fluid" alt="">
+                                <img src="~/Images/Blog/@Model.Image" class="img-fluid" alt="" style="width:350px; height:250px">
                             </a>
                         </div>
                         <br />
@@ -28,7 +28,7 @@
                         <textarea asp-for="Content" class="form-control"></textarea>
                         <span asp-validation-for="Content" class="text-danger"></span>
                       </div>
-                      <button type="submit" class="btn btn-gradient-primary mr-2">Təstiqlə</button>
-                      <a asp-action="Blogs" asp-controller="Writer" class="btn btn-light">Ləğv et</a>
+                      <button type="submit" class="btn btn-primary btn-sm">Təstiqlə</button>
+                      <a asp-action="Blogs" asp-controller="Writer" class="btn btn-white btn-sm">Ləğv et</a>
                     </form>
                   </div>

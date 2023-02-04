@@ -1,6 +1,6 @@
 ﻿@using Entity.Concrete;    
 @model AppUser;  
-    
+  @*  
     <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
@@ -14,4 +14,25 @@
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
-            </li>
+            </li>*@
+
+
+
+            <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <img alt="image" class="rounded-circle" src="~/Images/User/@Model.Image" style="width:50px; height:50px"/>
+                        <br />
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="block m-t-xs font-bold">@Model.FullName</span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a class="dropdown-item" href="/Writer/Update/">Profil</a></li>
+                            <li><a class="dropdown-item" href="/Writer/PasswordChange/">Parolu dəyiş</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/Auth/LogOut">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                       MM
+                    </div>
+                </li>

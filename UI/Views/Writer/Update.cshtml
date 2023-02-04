@@ -6,13 +6,11 @@
 
 
 <div class="card-body">
-                    <h4 class="card-title">Bloq üzərində dəyişiklik et</h4>
+                    <h4 class="card-title">Profil üzərində dəyişiklik et</h4>
 
                     <div class="blog_info_left_grid">
-                                <img src="~/Images/Blog/@Model.Image" class="img-fluid" alt="">
-                            </a>
+                                <img src="~/Images/User/@Model.Image" class="img-fluid" alt="">                           
                         </div>
-                        <br />
                         <br />
                     <form class="forms-sample" asp-controller="Writer" asp-action="Update" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -42,7 +40,7 @@
                         <span class="text-warning">Şəkili dəyişdirmək istəmirsinizsə boş qoyun</span><br />
                         <span class="text-danger" asp-validation-for="Image"></span>
                       </div>
-                      <button type="submit" class="btn btn-gradient-primary mr-2">Təstiqlə</button>
-                      <a asp-action="Update" asp-controller="Writer" class="btn btn-light">Ləğv et</a>
+                      <button type="submit" class="btn btn-primary btn-sm">Təstiqlə</button>
+                      <a asp-action="Update" asp-controller="Writer" class="btn btn-white btn-sm">Ləğv et</a>
                     </form>
                   </div>

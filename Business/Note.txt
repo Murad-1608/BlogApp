@@ -16,3 +16,8 @@ Writer dashboard duzeldende hava melumati almaq isteyirsense 103cu derse bax
 
 
 Api oyrenmek ucun 114den bu terefe bax
+
+
+1) Mesaj
+2) Bildirim
+3) Abune ve comment

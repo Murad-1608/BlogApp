@@ -16,5 +16,6 @@ namespace DataAccess.Concrete.EntityFramework
                                         context.Blogs.Where(filter).Include(x => x.Category).ToList();
             }
         }
+     
     }
 }

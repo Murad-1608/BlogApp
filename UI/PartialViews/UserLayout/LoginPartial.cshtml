@@ -1,13 +1,27 @@
 ﻿<div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
-    <span>Xoş gəlmişsiniz</span>
-    <span class="mx-lg-4 mx-md-2  mx-1">
-        <a href="/Auth/Login">
-            <i class="fas fa-lock"></i> Login
-        </a>
-    </span>
-    <span>
-        <a href="/Auth/Register">
-            <i class="far fa-user"></i> Qeydiyyat
-        </a>
-    </span>
+    
+
+    @if (User.Identity.IsAuthenticated)
+    {
+             <span>
+            <a href="/Writer/Update">
+                <i class="far fa-user"></i> Profilim
+            </a>
+        </span>   
+    }
+    else
+    {
+            <span>Xoş gəlmişsiniz</span>
+           <span class="mx-lg-4 mx-md-2  mx-1">
+            <a href="/Auth/Login">
+                <i class="fas fa-lock"></i> Login
+            </a>
+        </span>
+        <span>
+            <a href="/Auth/Register">
+                <i class="far fa-user"></i> Qeydiyyat
+            </a>
+        </span> 
+    }
+    
 </div>

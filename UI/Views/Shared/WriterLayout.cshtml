@@ -1,127 +1,244 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
+<html>
+
+<head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
-    <!-- plugins:css -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin panel</title>
+
+    <link href="~/AdminTemplate/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/AdminTemplate/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="~/AdminTemplate/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <link href="~/AdminTemplate/css/animate.css" rel="stylesheet">
+    <link href="~/AdminTemplate/css/style.css" rel="stylesheet">
+
+
     <link rel="stylesheet" href="~/writer/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/writer/assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="~/writer/assets/css/style.css">
-    <!-- End layout styles -->
+ 
+
+
     <link rel="shortcut icon" href="~/writer/assets/images/favicon.ico" />
-  </head>
-  <body>
-    <div class="container-scroller">
-      <!-- partial:partials/_navbar.html -->
-      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand" asp-controller="Writer" asp-action="Index">
-                        <i class="fab fa-linode"></i> Muradov
-                    </a>
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                
+
+                    @await Component.InvokeAsync("WriterDetailLeftNavbar")
+
+
+                <li>
+                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> </a>                    
+                </li>
+                <li>
+                    <a asp-controller="Writer" asp-action="Update"><i class="fa fa-diamond"></i> <span class="nav-label">Profil</span></a>
+                </li>
+                <li>
+                    <a asp-controller="Writer" asp-action="Blogs"><i class="fa fa-table"></i> <span class="nav-label">Bloqlar</span></a>                   
+                </li>
+                <li>
+                    <a asp-controller="Blog" asp-action="Add"><i class="fa fa-edit"></i> <span class="nav-label">Yeni bloq</span></a>                   
+                </li>
+                <li>
+                    <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mesajlar </span><span class="label label-warning float-right">16/24</span></a>                 
+                </li>
+            </ul>
+
         </div>
-        <div class="navbar-menu-wrapper d-flex align-items-stretch">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="mdi mdi-menu"></span>
-          </button>
-          <div class="search-field d-none d-md-block">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
+    </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="Axtarılacaq söz ..." class="form-control" name="top-search" id="top-search">
                 </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Axtarılacaq söz ...">
-              </div>
             </form>
-          </div>
-          <ul class="navbar-nav navbar-nav-right">
-
-                    @await Component.InvokeAsync("WriterNameAndSurname")
-
-            <li class="nav-item d-none d-lg-block full-screen-link">
-              <a class="nav-link">
-                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <i class="mdi mdi-email-outline"></i>
-                <span class="count-symbol bg-warning"></span>
-              </a>
-
-                        @await Component.InvokeAsync("WriterMessageNotification")
-
-
-
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                <i class="mdi mdi-bell-outline"></i>
-                <span class="count-symbol bg-danger"></span>
-              </a>
-                        @await Component.InvokeAsync("WriterNotification")
-            </li>
-            <li class="nav-item nav-logout d-none d-lg-block">
-              <a class="nav-link"  href="/Auth/LogOut">
-                <i class="mdi mdi-power"></i>
-              </a>
-            </li>
-            <li class="nav-item nav-settings d-none d-lg-block">
-              <a class="nav-link">
-                <i class="mdi mdi-format-line-spacing"></i>
-              </a>
-            </li>
-          </ul>
-          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-            <span class="mdi mdi-menu"></span>
-          </button>
         </div>
-      </nav>
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a class="dropdown-item float-left" href="profile.html">
+                                    <img alt="image" class="rounded-circle" src="img/a7.jpg">
+                                </a>
+                                <div class="media-body">
+                                    <small class="float-right">46h ago</small>
+                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a class="dropdown-item float-left" href="profile.html">
+                                    <img alt="image" class="rounded-circle" src="img/a4.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="float-right text-navy">5h ago</small>
+                                    <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a class="dropdown-item float-left" href="profile.html">
+                                    <img alt="image" class="rounded-circle" src="img/profile.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="float-right">23h ago</small>
+                                    <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                    <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="mailbox.html" class="dropdown-item">
+                                    <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="mailbox.html" class="dropdown-item">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                    <span class="float-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li>
+                            <a href="profile.html" class="dropdown-item">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="float-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li>
+                            <a href="grid_options.html" class="dropdown-item">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="float-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="notifications.html" class="dropdown-item">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
 
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
-      <partial name="~/PartialViews/WriterLayout/WriterLeftNavbar.cshtml"></partial>
-        <!-- partial -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-                    @RenderBody()
-          </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          <footer class="footer">
-            <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Sayta xoş gəlmişsiniz @DateTime.Now.Year</span>
+
+                <li>
+                    <a asp-controller="Auth" asp-action="LogOut">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>@ViewBag.Title</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Ana Səhifə</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <strong>@ViewBag.Title</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
             </div>
-          </footer>
-          <!-- partial -->
+        <div class="wrapper wrapper-content  animated fadeInRight">
+
+                @RenderBody()
         </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="~/writer/assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="~/writer/assets/vendors/chart.js/Chart.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="~/writer/assets/js/off-canvas.js"></script>
-    <script src="~/writer/assets/js/hoverable-collapse.js"></script>
-    <script src="~/writer/assets/js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="~/writer/assets/js/dashboard.js"></script>
-    <script src="~/writer/assets/js/todolist.js"></script>
-    <!-- End custom js for this page -->
-  </body>
+        <br />
+        <br />
+        <div class="footer">
+            <div class="float-right">
+                <a class="btn btn-info" href="/Admin/Blog/Index">Admin panel</a>
+            </div>
+            <div>
+                <strong>murad.yunus.2017@gmail.com</strong> Admin hamını salamlıyır
+            </div>
+        </div>
+
+        </div>
+        </div>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="~/AdminTemplate/js/jquery-3.1.1.min.js"></script>
+    <script src="~/AdminTemplate/js/popper.min.js"></script>
+    <script src="~/AdminTemplate/js/bootstrap.js"></script>
+    <script src="~/AdminTemplate/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/AdminTemplate/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="~/AdminTemplate/js/inspinia.js"></script>
+    <script src="~/AdminTemplate/js/plugins/pace/pace.min.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+
+        $(document.body).on("click",".client-link",function(e){
+            e.preventDefault()
+            $(".selected .tab-pane").removeClass('active');
+            $($(this).attr('href')).addClass("active");
+        });
+
+    });
+
+
+</script>
+
+</body>
 </html>

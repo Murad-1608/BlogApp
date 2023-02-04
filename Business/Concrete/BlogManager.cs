@@ -24,6 +24,11 @@ namespace Business.Concrete
             blogDal.Delete(blog);
         }
 
+        public List<Blog> GetAll()
+        {
+            return blogDal.GetListWithCategory();
+        }
+
         public List<Blog> GetBlogListByWriter(int writerId)
         {
             return blogDal.GetAll(x => x.AppUserId == writerId && x.Status == true);

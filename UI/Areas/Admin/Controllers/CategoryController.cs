@@ -46,6 +46,7 @@ namespace UI.Areas.Admin.Controllers
 
                 return RedirectToAction("Index", "Category");
             }
+
             ViewBag.Title = "Kateqoriya";
 
             return View(model);
@@ -55,7 +56,7 @@ namespace UI.Areas.Admin.Controllers
         {
             categoryService.Delete(id);
 
-            return RedirectToAction("Index","Category");
+            return RedirectToAction("Index", "Category");
         }
     }
 }

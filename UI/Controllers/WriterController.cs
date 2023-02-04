@@ -23,6 +23,8 @@ namespace UI.Controllers
         }
         public IActionResult Blogs()
         {
+            ViewBag.Title = "Bloqlar";
+
             var writer = userManager.FindByNameAsync(User.Identity.Name).Result;
 
             var blogs = blogService.GetListWithCategoryByWriter(writer.Id);
@@ -32,6 +34,8 @@ namespace UI.Controllers
 
         public IActionResult Update()
         {
+            ViewBag.Title = "Profil";
+
             var user = userManager.FindByNameAsync(User.Identity.Name).Result;
 
 
@@ -40,7 +44,7 @@ namespace UI.Controllers
                 Email = user.Email,
                 FullName = user.FullName,
                 UserName = user.UserName,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber                
             };
 
             return View(model);
@@ -92,12 +96,16 @@ namespace UI.Controllers
         [HttpGet]
         public IActionResult PasswordChange()
         {
+            ViewBag.Title = "Parolu yenilə";
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> PasswordChange(PasswordChangeViewModel viewModel)
         {
+            ViewBag.Title = "Parolu yenilə";
+
             AppUser user = userManager.FindByNameAsync(User.Identity.Name).Result;
 
             if (ModelState.IsValid)
