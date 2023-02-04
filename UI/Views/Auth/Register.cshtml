@@ -1,0 +1,70 @@
+﻿@using UI.Models;
+@model RegisterModel
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Qeydiyyat</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                <form method="post" asp-controller="Auth" asp-action="Register" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="UserName">İstifadəçi adı</label>
+                            <input asp-for="UserName" type="text" class="form-control" id="validationDefault01" placeholder="" required="">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="FullName">Ad və soyad</label>
+                            <input asp-for="FullName" type="text" class="form-control" id="validationDefault01" placeholder="" required="">
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>                        
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Password" for="Password mb-2">Parol</label>
+                            <input asp-for="Password" type="password" class="form-control" id="password1" placeholder="" required="">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                         <div class="col-md-6 mb-3">
+                            <label asp-for="Email">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" id="validationDefault02" placeholder="" required="">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>                        
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="PhoneNumber" for="validationCustom02">Telefon</label>
+                            <input asp-for="PhoneNumber" type="text" class="form-control" id="validationDefault02" placeholder="" required="">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div> 
+                        
+                        <div class="form-group col-md-6">
+                            <label asp-for="Image" for="exampleInputPassword2 mb-2">Şəkil</label>
+                            <input name="image" type="file" class="form-control" id="image" placeholder="" required="">
+                            <span asp-validation-for="Image" class="text-danger"></span>
+
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary submit mb-4">Qeydiyyat</button>
+                    <p>
+                        <a id="Rule" href="#">Şərtləri oxudum və qəbul edirəm</a>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('#Rule').click(function() {
+        swal("Email və parolunuz qorunacaq və heç kim ilə paylaşılmayacaqdır. Siz heç kimə vermədiyiniz müddətdə");
+    });
+</script>

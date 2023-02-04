@@ -1,0 +1,38 @@
+﻿@using UI.Models.ViewModels;
+@{
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+@model BlogViewModel
+
+<div class="card-body">
+                    <h4 class="card-title">Yeni bloq əlavə et</h4>
+                    <form class="forms-sample" asp-controller="Blog" asp-action="Add" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Başlıq</label>
+                        <input type="text" asp-for="BlogModel.Title" class="form-control" id="exampleInputName1" placeholder="Başlıq">
+                        <span asp-validation-for="BlogModel.Title" class="text-danger"></span>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Mövzu</label>
+                        <textarea asp-for="BlogModel.Content" class="form-control"></textarea>
+                        <span asp-validation-for="BlogModel.Content" class="text-danger"></span>
+                      </div>
+                       <div class="col-md-6 mb-3">
+                            <label for="validationCustom03">Kateqoriya</label>
+            @Html.DropDownListFor(x=>x.BlogModel.CategoryId, new SelectList(Model.Categories, "Value", "Text"), new{@class="form-control"})
+            @Html.ValidationMessageFor(x=>x.BlogModel.CategoryId,"",new{@class="text-danger"})
+                        </div>                   
+                      <div class="form-group">
+                        <label>Şəkil</label>
+                        <input type="file" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                          <input asp-for="BlogModel.Image" type="file" class="form-control" placeholder="Şəkil yüklə">
+                        <span asp-validation-for="BlogModel.Image" class="text-danger"></span>
+                        </div>
+                      </div>
+
+                      <input type="hidden" asp-for="@Model.Categories" />
+                      <button type="submit" class="btn btn-gradient-primary mr-2">Təstiqlə</button>
+                      <a asp-action="Blogs" asp-controller="Writer" class="btn btn-light">Ləğv et</a>
+                    </form>
+                  </div>

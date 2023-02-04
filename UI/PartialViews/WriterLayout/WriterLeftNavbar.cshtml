@@ -1,0 +1,44 @@
+﻿        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+
+        @await Component.InvokeAsync("WriterDetailLeftNavbar")
+
+           
+            <li class="nav-item">
+              <a class="nav-link" href="/Writer/Update">
+                <span class="menu-title">Profilim</span>
+                <i class="mdi mdi-contacts menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Writer/Blogs">
+                <span class="menu-title">Bloqlarım</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Blog/Add">
+                <span class="menu-title">Yeni bloq</span>
+                <i class="mdi mdi-chart-bar menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/charts/chartjs.html">
+                <span class="menu-title">Mesajlar</span>
+                <i class="mdi mdi-message menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Blog/Index">
+                <span class="menu-title">Sayta get</span>
+                <i class="mdi mdi-car menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Auth/LogOut">
+                <span class="menu-title">Çıxış et</span>
+                <i class="mdi mdi-logout menu-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>

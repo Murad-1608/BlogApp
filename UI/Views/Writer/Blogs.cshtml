@@ -1,0 +1,42 @@
+﻿@using Entity.Concrete;
+@model List<Blog>
+@{
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th> Şəkil </th>
+                          <th> Başlıq </th>
+                          <th> Mövzu </th>
+                          <th> İzlənmə sayı </th>
+                          <th> Tarix </th>
+                          <th> Yenilə </th>
+                          <th> Sil </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+        @foreach (var item in Model)
+        {
+                                <tr>
+                                  <td class="py-1">
+                                    <img src="~/Images/Blog/@item.Image" alt="image" />
+                                  </td>
+                                  <td> @item.Title</td>                              
+                                  <td> @item.Content.Substring(0,30)... </td>
+                                  <td> @item.Seen </td>
+                                  <td> @item.CreateDate.ToShortDateString() </td>
+                                      <td> <a asp-controller="Blog" asp-action="Update" asp-route-id="@item.Id"><i class="mdi mdi-border-color"></i></a> </td>
+                                              <td> <a asp-controller="Blog" asp-action="Delete" asp-route-id="@item.Id"><i class="mdi mdi-close-circle"></i></a> </td>
+                                </tr>
+
+        }
+                      </tbody>
+                    </table>
+
+                    <br />
+                    <br />
+
+<a asp-controller="Blog" asp-action="Add" class="btn btn-info">Yeni bloq yarat</a>

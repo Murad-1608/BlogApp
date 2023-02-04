@@ -1,0 +1,75 @@
+﻿@using Entity.Concrete
+@model Blog
+
+<section class="banner-bottom">
+    <!--/blog-->
+    <div class="container">
+        <div class="row">
+            <!--left-->
+            <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
+                <div class="blog-grid-top">
+                    <div class="b-grid-top">
+                        <div class="blog_info_left_grid">
+                            <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@Model.Id">
+                                <img src="~/Images/Blog/@Model.Image" class="img-fluid" alt="" style="width:900px; height:500px;">
+                            </a>
+                        </div>
+                        <div class="blog-info-middle">
+                            <ul>
+                                <li>
+                                    <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@Model.Id">
+                                        <i class="far fa-calendar-alt"></i> @Model.CreateDate.ToShortDateString()
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@Model.Id">
+                                        <i class="far fa-comment"></i> @ViewData["NumberOfComment"] Comments
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>
+                        <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@Model.Id">@Model.Title </a>
+                    </h3>
+                    <p>
+                        @Model.Content
+                    </p>
+                    <a asp-controller="Blog" asp-action="Index" class="btn btn-primary read-m">Bütün bloqlar</a>
+                </div>
+
+                @*COMMENTS*@
+                @await Component.InvokeAsync("GetComments",Model.Id)
+
+                <partial name="~/PartialViews/BlogDetail/AddCommentPartial.cshtml" />
+
+            </div>
+
+            <!--//left-->
+            <!--right-->
+            <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
+                <div class="right-blog-info text-left">
+                    <div class="tech-btm">
+                        <img src="~/Template/images/banner1.jpg" class="img-fluid" alt="">
+                    </div>
+
+                    <h4>Abunə ol</h4>
+                    @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
+
+                    @await Component.InvokeAsync("GetCategories")
+
+                    @await Component.InvokeAsync("WriterLastBlogs",Model.AppUserId)
+
+                    @await Component.InvokeAsync("LastestBlog")
+
+
+
+                </div>
+
+            </aside>
+            <!--//right-->
+        </div>
+    </div>
+</section>

@@ -1,0 +1,34 @@
+﻿@using UI.Models.ViewModels;
+@{
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+@model UpdateViewModel
+
+
+<div class="card-body">
+                    <h4 class="card-title">Bloq üzərində dəyişiklik et</h4>
+
+                    <div class="blog_info_left_grid">
+                            <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@Model.Id">
+                                <img src="~/Images/Blog/@Model.Image" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <br />
+                        <br />
+                    <form class="forms-sample" asp-controller="Blog" asp-action="Update">
+                      <div class="form-group">
+                          <input type="hidden" asp-for="Id"/>
+
+                        <label for="exampleInputName1">Başlıq</label>
+                        <input type="text" asp-for="Title" class="form-control" id="exampleInputName1" placeholder="Başlıq">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Mövzu</label>
+                        <textarea asp-for="Content" class="form-control"></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                      </div>
+                      <button type="submit" class="btn btn-gradient-primary mr-2">Təstiqlə</button>
+                      <a asp-action="Blogs" asp-controller="Writer" class="btn btn-light">Ləğv et</a>
+                    </form>
+                  </div>

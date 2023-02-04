@@ -1,0 +1,18 @@
+﻿Comment'lere qeydiyyatdan kecmis userlarin sekili gorsensin, kecmemislerder bos user iconu olsun.
+Qeydiyyatdan kecenler ad yazmasin birbasa comment yazsin
+
+User sistemi identity user ile olsun
+
+
+Comment'de problem
+
+Bildirimler ve Mesajlar duzelt writer panelde
+
+
+Excel export
+
+
+Writer dashboard duzeldende hava melumati almaq isteyirsense 103cu derse bax
+
+
+Api oyrenmek ucun 114den bu terefe bax

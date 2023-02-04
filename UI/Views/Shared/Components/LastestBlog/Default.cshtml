@@ -1,0 +1,20 @@
+﻿@using Entity.Concrete;
+@model Blog 
+
+<div class="single-gd tech-btm">
+                        <h4>Ən son paylaşılan bloq</h4>
+                        <div class="blog-grids">
+                            <div class="blog-grid-left">
+                                <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@Model.Id">
+                                    <img src="~/Images/Blog/@Model.Image" class="img-fluid" alt="" style="width:350px; height:250px;">
+                                </a>
+                            </div>
+                            <div class="blog-grid-right">
+
+                                <h5>
+                                    <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@Model.Id">@Model.Title</a>
+                                </h5>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
