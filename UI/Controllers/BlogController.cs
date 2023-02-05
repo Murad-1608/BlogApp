@@ -160,7 +160,6 @@ namespace UI.Controllers
                     Image = blog.Image,
                     CategoryId = blog.CategoryId,
                     Seen = blog.Seen,
-                    AppUserId = blog.AppUserId
                 };
                 return View(viewModel);
             }
@@ -181,7 +180,7 @@ namespace UI.Controllers
             {
                 Blog blog = new Blog();
                 blog.Id = viewModel.Id;
-                blog.AppUserId = viewModel.AppUserId;
+                blog.AppUserId = appuser.Id;
                 blog.Title = viewModel.Title;
                 blog.CategoryId = viewModel.CategoryId;
                 blog.Content = viewModel.Content;

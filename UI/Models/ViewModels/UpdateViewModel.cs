@@ -6,7 +6,6 @@ namespace UI.Models.ViewModels
     public class UpdateViewModel
     {
         public int Id { get; set; }
-        public int AppUserId { get; set; }
         public int Seen { get; set; }
         [Required(ErrorMessage = "Başlıq boş ola bilməz")]
         [MinLength(4, ErrorMessage = "Başlıq ən az 4 simvol ola bilər")]

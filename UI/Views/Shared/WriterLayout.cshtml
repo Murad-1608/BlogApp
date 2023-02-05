@@ -52,9 +52,18 @@
                 <li>
                     <a asp-controller="Blog" asp-action="Add"><i class="fa fa-edit"></i> <span class="nav-label">Yeni bloq</span></a>                   
                 </li>
-                <li>
-                    <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mesajlar </span><span class="label label-warning float-right">16/24</span></a>                 
+                  <li>
+                    <a href="/Home/Index"><i class="fa fa-laptop"></i> <span class="nav-label">Sayta geri dön</span></a>
                 </li>
+                <li>
+                    <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning float-right">16/24</span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a asp-controller="Message" asp-action="Index">Gələn mesajlar</a></li>
+                        <li><a asp-controller="Message" asp-action="Send">Göndərilən mesajlar</a></li>
+                        <li><a asp-controller="Message" asp-action="Add">Mesaj göndər</a></li>
+                    </ul>
+                </li>
+
             </ul>
 
         </div>

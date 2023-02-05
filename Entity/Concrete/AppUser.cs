@@ -7,7 +7,7 @@ namespace Entity.Concrete
         public string FullName { get; set; }
         public string Image { get; set; }
 
-        //public virtual ICollection<Message> Sender { get; set; }
-        //public virtual ICollection<Message> Reveiver { get; set; }
+        public ICollection<Message> Sender { get; set; }
+        public ICollection<Message> Reveiver { get; set; }
     }
 }

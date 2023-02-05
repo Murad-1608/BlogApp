@@ -33,6 +33,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<NotificationManager>().As<INotificationService>().SingleInstance();
             builder.RegisterType<NotificationDal>().As<INotificationDal>().SingleInstance();
+
+            builder.RegisterType<MessageManager>().As<IMessageService>().SingleInstance();
+            builder.RegisterType<MessageDal>().As<IMessageDal>().SingleInstance();
         }
     }
 }

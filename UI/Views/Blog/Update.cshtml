@@ -18,6 +18,8 @@
                     <form class="forms-sample" asp-controller="Blog" asp-action="Update">
                       <div class="form-group">
                           <input type="hidden" asp-for="Id"/>
+                          <input type="hidden" asp-for="Image"/>
+                          <input type="hidden" asp-for="CategoryId"/>
 
                         <label for="exampleInputName1">Başlıq</label>
                         <input type="text" asp-for="Title" class="form-control" id="exampleInputName1" placeholder="Başlıq">

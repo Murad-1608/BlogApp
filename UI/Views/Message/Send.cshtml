@@ -1,0 +1,58 @@
+﻿@using Entity.Concrete;
+@model List<Message>
+@{
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+        <div class="row">
+                       <partial name="~/PartialViews/WriterLayout/MessageTransactions.cshtml"/> 
+
+            <div class="col-lg-9 animated fadeInRight">
+            <div class="mail-box-header">
+
+                <form method="get" action="index.html" class="float-right mail-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="search" placeholder="Search email">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-sm btn-primary">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <h2>
+                    Göndərilən mesajlar (@Model.Count)
+                </h2>
+                <div class="mail-tools tooltip-demo m-t-md">
+                    <div class="btn-group float-right">
+                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+                    </div>
+                    <a class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox" href="/Message/Send"><i class="fa fa-refresh"></i> Refresh</a>
+                    <a class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash" href="/Message/DeleteSendAll/"><i class="fa fa-trash-o"></i> </a>
+
+                </div>
+            </div>
+                <div class="mail-box">
+
+                <table class="table table-hover table-mail">
+                <tbody>
+                        @foreach (var item in Model)
+                        {
+                                     <tr class="unread">
+                                <td class="mail-ontact"><a asp-controller="Message" asp-action="ViewMessage" asp-route-id="@item.Id">@item.Receiver.FullName</a></td>
+                                <td class="mail-subject"><a asp-controller="Message" asp-action="ViewMessage" asp-route-id="@item.Id">@item.Subject</a></td>
+                            <td class="text-right mail-date">@item.CreateDate.ToShortDateString()</td>
+                        </tr>  
+                        }
+
+                </tbody>
+                </table>
+
+
+                </div>
+            </div>
+        </div>
+        </div>

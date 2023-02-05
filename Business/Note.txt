@@ -1,23 +1,10 @@
-﻿Comment'lere qeydiyyatdan kecmis userlarin sekili gorsensin, kecmemislerder bos user iconu olsun.
-Qeydiyyatdan kecenler ad yazmasin birbasa comment yazsin
-
-User sistemi identity user ile olsun
-
-
-Comment'de problem
-
-Bildirimler ve Mesajlar duzelt writer panelde
-
-
-Excel export
-
-
-Writer dashboard duzeldende hava melumati almaq isteyirsense 103cu derse bax
-
-
-Api oyrenmek ucun 114den bu terefe bax
-
-
-1) Mesaj
-2) Bildirim
-3) Abune ve comment
+﻿Seherin tasklari:
+1) WriterLayout'da mesaj ve bildirimleri duzelt
+2) Admin panel bildirim yazmaq ve silmek
+3) Role bazli emeliyyatlar
+4) Mesajlarda reply funksiyasi
+4) Abune ve comment
+5) Sifreni unuttum
+6) Register olanda testiq kodu gondermek
+7) Loglama
+8) Search
