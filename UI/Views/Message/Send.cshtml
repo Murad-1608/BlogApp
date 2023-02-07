@@ -10,17 +10,6 @@
 
             <div class="col-lg-9 animated fadeInRight">
             <div class="mail-box-header">
-
-                <form method="get" action="index.html" class="float-right mail-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" name="search" placeholder="Search email">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-sm btn-primary">
-                                Search
-                            </button>
-                        </div>
-                    </div>
-                </form>
                 <h2>
                     Göndərilən mesajlar (@Model.Count)
                 </h2>
@@ -41,9 +30,9 @@
                 <tbody>
                         @foreach (var item in Model)
                         {
-                                     <tr class="unread">
-                                <td class="mail-ontact"><a asp-controller="Message" asp-action="ViewMessage" asp-route-id="@item.Id">@item.Receiver.FullName</a></td>
-                                <td class="mail-subject"><a asp-controller="Message" asp-action="ViewMessage" asp-route-id="@item.Id">@item.Subject</a></td>
+                                     <tr class="read">
+                                <td class="mail-ontact"><a asp-controller="Message" asp-action="ViewSendMessage" asp-route-id="@item.Id">@item.Receiver.FullName</a></td>
+                                <td class="mail-subject"><a asp-controller="Message" asp-action="ViewSendMessage" asp-route-id="@item.Id">@item.Subject</a></td>
                             <td class="text-right mail-date">@item.CreateDate.ToShortDateString()</td>
                         </tr>  
                         }

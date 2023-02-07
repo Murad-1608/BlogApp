@@ -3,14 +3,18 @@
 //En son merhele
 1) Social media dataazaya elave et
 2) Unvan telefon email databazaya elave et
-7) Loglama                                      //Bu gun
+7) Loglama                                     
 8) Search   
-3) Role bazli emeliyyatlar                     // Sabah
+3) Role bazli emeliyyatlar                     
 
 
 //Sonraki update
 5) Sifreni unuttum
 6) Register olanda testiq kodu gondermek
+
+
+
+
 
 
 

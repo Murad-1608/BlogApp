@@ -6,6 +6,5 @@ namespace Entity.Concrete
     {
         public string Details { get; set; }
         public string Image { get; set; }
-        public string MapLocation { get; set; }
     }
 }

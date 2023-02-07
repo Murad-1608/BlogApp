@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 
 namespace Business.Concrete
@@ -16,5 +17,15 @@ namespace Business.Concrete
         {
             return aboutDal.GetAll().Last();
         }
+
+        public void Update(About about)
+        {
+            aboutDal.Update(about);
+        }
+        public void Add(About about)
+        {
+            aboutDal.Add(about);
+        }
+
     }
 }

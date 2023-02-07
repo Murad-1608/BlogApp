@@ -19,6 +19,10 @@
                     <h3>
                         <span class="font-normal">Mövzu: </span>@Model.Subject
                     </h3>
+                    <br />
+                    <h5>
+                        <span class="font-normal">Göndərdi: </span>@Model.Sender.UserName
+                    </h5>
                     <h5>
                         <span class="float-right font-normal">@Model.CreateDate.ToString("hh:mm tt") / @Model.CreateDate.ToString("dd MMMM yyyy")</span>
                     </h5>

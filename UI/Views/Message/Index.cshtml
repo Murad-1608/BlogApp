@@ -12,18 +12,7 @@
 
 
             <div class="col-lg-9 animated fadeInRight">
-            <div class="mail-box-header">
-
-                <form method="get" action="index.html" class="float-right mail-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" name="search" placeholder="Search email">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-sm btn-primary">
-                                Search
-                            </button>
-                        </div>
-                    </div>
-                </form>
+            <div class="mail-box-header">                   
                 <h2>
                     Gələn mesajlar (@Model.Count)
                 </h2>
@@ -33,25 +22,28 @@
                         <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
 
                     </div>
-                    <a class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox" href="/Message/Index"><i class="fa fa-refresh"></i> Refresh</a>
-                    <a class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"href="/Message/DeleteReceiveAll/"><i class="fa fa-trash-o"></i> </a>
+                    <a class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Səhifəni yenilə" href="/Message/Index"><i class="fa fa-refresh"></i> Yenilə</a>
+                    <a class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Seçilənləri sil"href="/Message/DeleteReceiveAll/"><i class="fa fa-trash-o"></i></a>
+                    <a class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Hamısını sil" href="/Message/Index">Hamısını sil</a>
 
                 </div>
             </div>
                 <div class="mail-box">
 
                 <table class="table table-hover table-mail">
-                <tbody>
+                    
+                <tbody>                   
+                     
                         @foreach (var item in Model)
                         {
-                                         <tr class="unread">                        
-                                <td class="mail-ontact"><a asp-controller="Message" asp-action="ViewMessage" asp-route-id="@item.Id">@item.Sender.FullName</a></td>
-                                  <td class="mail-subject"><a asp-controller="Message" asp-action="ViewMessage" asp-route-id="@item.Id">@item.Subject</a></td>
+                                <tr class="read">                          
+                                    <td class="mail-ontact"><a asp-controller="Message" asp-action="ViewReceiveMessage" asp-route-id="@item.Id">@item.Sender.FullName</a></td>
+                                      <td class="mail-subject"><a asp-controller="Message" asp-action="ViewReceiveMessage" asp-route-id="@item.Id">@item.Subject</a></td>
 
                                 <td class="text-right mail-date">@item.CreateDate.ToShortDateString()</td>
                             </tr>  
-                        }
 
+                        }
 
                 </tbody>
                 </table>

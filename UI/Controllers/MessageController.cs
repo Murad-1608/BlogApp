@@ -18,6 +18,8 @@ namespace UI.Controllers
         public IActionResult Index()
         {
             TempData["Panel"] = "Index";
+            ViewBag.Title = "Mesaj";
+
             var inbox = messageService.GetReceiverMessage(appuser.Id);
             inbox.Reverse();
             return View(inbox);
@@ -25,24 +27,41 @@ namespace UI.Controllers
         public IActionResult Send()
         {
             TempData["Panel"] = "Send";
+            ViewBag.Title = "Mesaj";
             var sendbox = messageService.GetSenderMessage(appuser.Id);
             sendbox.Reverse();
             return View(sendbox);
         }
 
-        public IActionResult ViewMessage(int id)
+        public IActionResult ViewReceiveMessage(int id)
         {
-            var message = messageService.ViewMessage(id);
+            var message = messageService.GetReceiverMessage(appuser.Id).Find(x => x.Id == id);
+            ViewBag.Title = "Mesaj";
 
             return View(message);
         }
-        public IActionResult Add()
+
+        public IActionResult ViewSendMessage(int id)
         {
+            var message = messageService.GetSenderMessage(appuser.Id).Find(x => x.Id == id);
+            ViewBag.Title = "Mesaj";
+
+            return View(message);
+        }
+
+
+        public IActionResult Add()
+        {           
+
+            ViewBag.Title = "Mesaj";
+
             return View();
         }
         [HttpPost]
         public IActionResult Add(MessageModel model)
         {
+            ViewBag.Title = "Mesaj";
+
 
             if (!ModelState.IsValid)
             {
@@ -50,11 +69,19 @@ namespace UI.Controllers
             }
 
 
-            var receiver = userManager.FindByEmailAsync(model.Email).Result;
+            var receiverEmail = userManager.FindByEmailAsync(model.Email).Result;
+            var receiverUserName = userManager.FindByNameAsync(model.Email).Result;
+
+            AppUser receiver = receiverEmail ?? receiverUserName;
 
             if (receiver == null)
             {
-                ModelState.AddModelError(nameof(model.Email), "Bu emaildə istifadəçi yoxdur");
+                ModelState.AddModelError(nameof(model.Email), "Belə istifadəçi mövcud deyil");
+                return View(model);
+            }
+            else if (receiver.Email == appuser.Email)
+            {
+                ModelState.AddModelError(nameof(model.Email), "Özünüzə mesaj ata bilmərsiniz");
                 return View(model);
             }
             Message message = new Message();
@@ -83,6 +110,7 @@ namespace UI.Controllers
                 messageService.Delete(sendbox[i].Id);
             }
 
+            ViewBag.Title = "Mesaj";
             return RedirectToAction("Send".ToString());
         }
 
@@ -95,6 +123,7 @@ namespace UI.Controllers
                 messageService.Delete(inbox[i].Id);
             }
 
+            ViewBag.Title = "Mesaj";
             return RedirectToAction("Index".ToString());
         }
     }

@@ -6,15 +6,17 @@
                 <h3 class="tittle">Login</h3>
                 <div class="row inner-sec">
                     <div class="login p-5 bg-light mx-auto mw-100">
-                    <form action="#" method="post">
+                    <form asp-controller="Auth" asp-action="Login" method="post">
                             <div class="form-group">
-                              <label for="exampleInputEmail1 mb-2">İstifadəçi adı</label>
+                              <label for="exampleInputEmail1 mb-2">İstifadəçi adı və ya Email</label>
                               <input name="UserName" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
                               <span class="text-danger" asp-validation-for="UserName"></span>
                             </div>
                             <div class="form-group">
                               <label for="exampleInputPassword1 mb-2">Parol</label>
                               <input type="password" name="Password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+                              <br />
+
                               <span class="text-danger" asp-validation-for="Password"></span>
                             </div>
                             <button type="submit" class="btn btn-primary submit mb-4">Daxil ol</button>

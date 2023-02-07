@@ -1,0 +1,19 @@
+﻿@using Entity.Concrete;
+@model AppUser            
+    
+<div class="blog-grid-top">
+                    <div class="b-grid-top">
+                        <div class="blog_info_left_grid">
+                                <img src="~/Images/User/@Model.Image" class="img-fluid" alt="" style="width:900px; height:500px; border-radius:50%">
+                            
+                        </div>
+                    </div>
+
+                    <h3>
+                       @Model.FullName 
+                    </h3>
+                    <p>
+                         @Model.UserName
+                    </p>
+                    <a asp-controller="Blog" asp-action="Index" class="btn btn-primary read-m">Bütün bloqlar</a>
+                </div>

@@ -9,6 +9,5 @@ namespace Business.Abstract
         void Delete(int id);
         void Add(Message message);
 
-        Message ViewMessage(int id);
     }
 }

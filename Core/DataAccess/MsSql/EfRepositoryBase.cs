@@ -26,7 +26,7 @@ namespace Core.DataAccess.MsSql
         }
 
         public TEntity Get(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter)
-        {
+        {       
             using var context = new TContext();
             return context.Set<TEntity>().FirstOrDefault(filter);
         }

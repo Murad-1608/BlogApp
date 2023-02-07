@@ -1,0 +1,36 @@
+﻿@using Entity.Concrete;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model IPagedList<AppUser>;
+
+@{
+    Layout = "_Layout";
+} 
+
+ <table class="table table-striped">
+  <thead>
+ <tr>
+<th>№</th>
+                                <th> Email</th>                              
+                                <th> Istifadəçi adı</th>                              
+                                <th> Ad və soyad</th>                              
+                            </tr>
+                            </thead>
+                            <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+                                                        <tr>
+                                                            <td>@(i + 1)</td>
+                                                                <td>@Model[i].Email</td>
+                                                                <td>@Model[i].UserName</td>
+                                                                <td>@Model[i].FullName</td>
+
+                                                        </tr>
+        }
+
+
+                            </tbody>
+                        </table>
+<br />
+
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new{ page }))

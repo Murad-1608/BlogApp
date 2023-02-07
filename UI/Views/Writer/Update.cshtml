@@ -8,8 +8,8 @@
 <div class="card-body">
                     <h4 class="card-title">Profil üzərində dəyişiklik et</h4>
 
-                    <div class="blog_info_left_grid">
-                                <img src="~/Images/User/@Model.CurrentImage" class="img-fluid" alt="" style="width:350px; height:250px">                            
+                    <div class="circular--landscape">
+                                <img src="~/Images/User/@Model.CurrentImage" class="img-fluid" alt="" style="width:150px; height:130px; border-radius:50%">                            
                         </div>
                     
                         <br />
@@ -42,6 +42,8 @@
                         <span class="text-danger" asp-validation-for="Image"></span>
                       </div>
                       <button type="submit" class="btn btn-primary btn-sm">Təstiqlə</button>
+                      <a asp-action="PasswordChange" asp-controller="Writer" class="btn btn-white btn-sm">Parolu dəyiş</a>
                       <a asp-action="Update" asp-controller="Writer" class="btn btn-white btn-sm">Ləğv et</a>
+
                     </form>
                   </div>

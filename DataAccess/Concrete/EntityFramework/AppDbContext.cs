@@ -9,7 +9,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb; Database=BlogAppIdentityDb; Integrated Security=true;");
+            optionsBuilder.UseSqlServer(@"Server=sql8004.site4now.net; Database=db_a9458d_blogappdb; Integrated Security=false; user id=db_a9458d_blogappdb_admin; password=murad2701");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -44,5 +44,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<NewsLetter> NewsLetters { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
     }
 }

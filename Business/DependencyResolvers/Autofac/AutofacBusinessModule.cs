@@ -36,6 +36,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<MessageManager>().As<IMessageService>().SingleInstance();
             builder.RegisterType<MessageDal>().As<IMessageDal>().SingleInstance();
+
+            builder.RegisterType<SocialMediaManager>().As<ISocialMediaService>().SingleInstance();
+            builder.RegisterType<SocialMediaDal>().As<ISocialMediaDal>().SingleInstance();
         }
     }
 }

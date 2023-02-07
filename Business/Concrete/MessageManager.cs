@@ -32,10 +32,5 @@ namespace Business.Concrete
         {
             return messageDal.GetWithSender(id);
         }
-
-        public Message ViewMessage(int id)
-        {
-            return messageDal.Get(x => x.Id == id);
-        }
     }
 }

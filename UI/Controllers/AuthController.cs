@@ -72,7 +72,10 @@ namespace UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                AppUser user = await userManager.FindByNameAsync(model.UserName);
+                AppUser userName = await userManager.FindByNameAsync(model.UserName);
+                AppUser userEmail = await userManager.FindByEmailAsync(model.UserName);
+
+                AppUser user = userName ?? userEmail;
 
                 if (user != null)
                 {
@@ -86,13 +89,15 @@ namespace UI.Controllers
                     }
                 }
             }
+
+            ModelState.AddModelError(nameof(model.Password), "İstifadəçi adı və parol yanlışdır");
             return View(model);
         }
 
         public IActionResult LogOut()
         {
             signInManager.SignOutAsync();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

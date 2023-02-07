@@ -1,0 +1,44 @@
+﻿@using Entity.Concrete;
+@model Message
+@{
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<div class="wrapper wrapper-content">
+        <div class="row">
+                       <partial name="~/PartialViews/WriterLayout/MessageTransactions.cshtml"/> 
+
+            <div class="col-lg-9 animated fadeInRight">
+            <div class="mail-box-header">
+                <h2>
+                    Mesaj
+                </h2>
+                <div class="mail-tools tooltip-demo m-t-md">
+
+
+                    <h3>
+                        <span class="font-normal">Mövzu: </span>@Model.Subject
+                    </h3>
+                    <br />
+                    <h5>
+                        <span class="font-normal">Aldı: </span>@Model.Receiver.UserName
+                    </h5>
+                    <h5>
+                        <span class="float-right font-normal">@Model.CreateDate.ToString("hh:mm tt") / @Model.CreateDate.ToString("dd MMMM yyyy")</span>
+                    </h5>
+                </div>
+            </div>
+                <div class="mail-box">
+
+
+                <div class="mail-body">
+                    <textarea class="form-control" name="Content" placeholder="Mesaj yazın" style="min-height:200px" disabled>@Model.Content</textarea>                      
+                </div>
+                        <div class="mail-body text-right tooltip-demo">
+                                <a title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white" href="/Message/Delete/@Model.Id/"><i class="fa fa-trash-o"></i> Sil</a>
+                        </div>
+                        <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        </div>
