@@ -19,13 +19,14 @@ namespace UI.Controllers
         {
             TempData["Panel"] = "Index";
             var inbox = messageService.GetReceiverMessage(appuser.Id);
+            inbox.Reverse();
             return View(inbox);
         }
         public IActionResult Send()
         {
             TempData["Panel"] = "Send";
             var sendbox = messageService.GetSenderMessage(appuser.Id);
-
+            sendbox.Reverse();
             return View(sendbox);
         }
 

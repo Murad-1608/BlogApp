@@ -19,7 +19,7 @@ namespace Business.Concrete
 
         public List<Comment> GetByBlogId(int blogId)
         {
-            return commentDal.GetAll(x => x.BlogId == blogId && x.Status == true);
+            return commentDal.GetCommentsWithUser(blogId);
         }
     }
 }

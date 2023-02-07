@@ -1,17 +1,16 @@
 ﻿@*asp-controller="NewsLetter" asp-action="SubscribeMail"*@
 
          <div class="tech-btm">
-             <form method="get" asp-controller="NewsLetter" asp-action="Subscribe">
-                 <p>Dəstək olmaq üçün sayta abunə ol</p>                 
-                        <input class="btn btn-primary read-m" id="subscribe" type="submit" value="Abunə ol"/>    
-             </form>
+            <p>Dəstək olmaq üçün sayta abunə ol</p>                 
+                        <input class="btn btn-primary read-m" id="subscribe" type="submit" value="Abunə ol"/> 
                                           
                     </div>
 
-                    <script type="text/javascript">
-                        $("#subscribe").click(function (){                              
-                            alert("Abunə olduğunuz üçün təşəkkür edirik");
-                        });
+                    <script>
+                       $("#subscribe").click(()=>{
+                           $.post("/Newsletter/Subscribe/");
+                           alert("Abunə olduğunuz üçün təşəkkür edirik");
+                       });
 
                     </script>
 

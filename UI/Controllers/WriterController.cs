@@ -32,6 +32,7 @@ namespace UI.Controllers
             return View(blogs);
         }
 
+        [HttpGet]
         public IActionResult Update()
         {
             ViewBag.Title = "Profil";
@@ -44,7 +45,8 @@ namespace UI.Controllers
                 Email = user.Email,
                 FullName = user.FullName,
                 UserName = user.UserName,
-                PhoneNumber = user.PhoneNumber                
+                PhoneNumber = user.PhoneNumber,
+                CurrentImage = user.Image
             };
 
             return View(model);

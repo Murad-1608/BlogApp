@@ -1,4 +1,7 @@
-﻿<footer>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<footer>
     <div class="container">
         <div class="row">
             <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
@@ -18,7 +21,8 @@
 
             <div class="col-lg-4 subscribe-main footer-grid-agileits-w3ls text-left">
                 <h2>Abunə ol</h2>
-                @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
+                <partial name="~/Views/NewsLetter/SubscribeMail.cshtml"/>
+              
                 <!-- //subscribe -->
             </div>
         </div>

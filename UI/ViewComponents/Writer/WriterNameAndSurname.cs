@@ -4,15 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace UI.ViewComponents.Writer
 {
-    public class WriterNameAndSurname : ViewComponent
+    public class WriterNameAndSurname : BaseViewComponent
     {
-        private readonly UserManager<AppUser> userManager;
-        public WriterNameAndSurname(UserManager<AppUser> userManager)
+        public WriterNameAndSurname(UserManager<AppUser> userManager) : base(userManager)
         {
-            this.userManager = userManager;
         }
 
-        public IViewComponentResult Invoke()
+        public override IViewComponentResult Invoke()
         {
             AppUser user = userManager.FindByNameAsync(User.Identity.Name).Result;
 

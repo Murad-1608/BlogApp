@@ -19,6 +19,15 @@ namespace Business.ValidationRules.CustomValidation
             };
         }
 
+        public override IdentityError DuplicateEmail(string email)
+        {
+            return new IdentityError()
+            {
+                Code = "InvalidUserName",
+                Description = $"{email} mövcuddur"
+            };
+        }
+
         public override IdentityError PasswordTooShort(int length)
         {
             return new IdentityError()

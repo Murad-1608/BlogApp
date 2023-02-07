@@ -1,0 +1,39 @@
+﻿@using Entity.Concrete;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model IPagedList<Contact>;
+
+@{
+    Layout = "_Layout";
+} 
+
+ <table class="table table-striped">
+  <thead>
+ <tr>
+<th>№</th>
+                                <th> Email</th>                              
+                                <th> Ad</th>                              
+                                <th> Mövzu</th>                              
+                                <th> Tarix</th>                              
+                            </tr>
+                            </thead>
+                            <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+                                                    <tr>
+                                                        <td>@(i + 1)</td>
+                                                            <td><a href="/Admin/ContactUs/MessageDetail/@Model[i].Id/">@Model[i].Mail</a></td>
+                                                            <td href="/Admin/ContactUs/MessageDetail/@Model[i].Id/">@Model[i].UserName</td>
+                                                            <td href="/Admin/ContactUs/MessageDetail/@Model[i].Id/">@Model[i].Subject</td>
+                                                            <td href="/Admin/ContactUs/MessageDetail/@Model[i].Id/">@Model[i].CreateDate.ToShortDateString()</td>                                                     
+
+                                                    </tr>
+        }
+
+
+                            </tbody>
+                        </table>
+<br />
+
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new{ page }))
+

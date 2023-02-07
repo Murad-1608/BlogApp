@@ -9,7 +9,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb; Database=BlogAppIdentityData1; Integrated Security=true;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb; Database=BlogAppIdentityDb; Integrated Security=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -18,7 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
                 .HasOne(x => x.Sender)
                 .WithMany(y => y.Sender)
                 .HasForeignKey(x => x.SenderId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Message>()
                 .HasOne(x => x.Receiver)
@@ -26,11 +26,11 @@ namespace DataAccess.Concrete.EntityFramework
                 .HasForeignKey(x => x.ReceiverId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
-            //builder.Entity<Comment>()
-            //    .HasOne(x => x.Blog)
-            //    .WithMany(y => y.Comments)
-            //    .HasForeignKey(x => x.BlogId)
-            //    .OnDelete(DeleteBehavior.ClientSetNull);
+            builder.Entity<Comment>()
+                .HasOne(x => x.AppUser)
+                .WithMany(y => y.Comments)
+                .HasForeignKey(x => x.AppUserId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
 
             base.OnModelCreating(builder);
         }
@@ -41,7 +41,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Writer> Writers { get; set; }
         public DbSet<NewsLetter> NewsLetters { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Message> Messages { get; set; }

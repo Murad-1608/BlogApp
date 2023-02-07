@@ -16,5 +16,15 @@ namespace Business.Concrete
         {
             contactDal.Add(contact);
         }
+
+        public Contact Get(int id)
+        {
+            return contactDal.Get(x => x.Id == id);
+        }
+
+        public List<Contact> GetAll()
+        {
+            return contactDal.GetAll();
+        }
     }
 }

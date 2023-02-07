@@ -9,5 +9,6 @@ namespace Entity.Concrete
 
         public ICollection<Message> Sender { get; set; }
         public ICollection<Message> Reveiver { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

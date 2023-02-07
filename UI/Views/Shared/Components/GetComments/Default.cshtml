@@ -15,9 +15,9 @@
     @foreach (var item in Model)
     {
             <div class="media">
-                <img src="~/Images/User/@item.UserImage" alt="" class="img-fluid" style="width:70px; height:70px"/>
+                <img src="~/Images/User/@item.AppUser.Image" alt="" class="img-fluid" style="width:70px; height:70px"/>
                 <div class="media-body">
-                    <h5 class="mt-0">@item.UserName</h5>
+                    <h5 class="mt-0">@item.AppUser.FullName</h5>
                     <p>
                     @item.Content
                     </p>

@@ -31,7 +31,7 @@ namespace UI.Controllers
             };
             newsletterService.Add(newsLetter);
 
-            return RedirectToAction("Index", "Blog");
+            return Ok();
 
         }
     }

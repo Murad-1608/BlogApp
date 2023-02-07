@@ -19,7 +19,7 @@ builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddIdentity<AppUser, AppRole>(opts =>
 {
     opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
-
+    opts.User.RequireUniqueEmail= true;
     opts.Password.RequiredLength = 6;
     opts.Password.RequireNonAlphanumeric = false;
     opts.Password.RequireLowercase = false;
@@ -50,7 +50,6 @@ builder.Services.ConfigureApplicationCookie(opts =>
 builder.Services.AddControllersWithViews();
 
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -61,6 +60,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 app.UseStatusCodePagesWithReExecute("/ErrorPage/Error1");
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

@@ -13,5 +13,6 @@ namespace UI.Models
         [Required(ErrorMessage = "Telefon boş ola bilməz")]
         public string PhoneNumber { get; set; }
         public IFormFile? Image { get; set; }
+        public string? CurrentImage { get; set; }
     }
 }

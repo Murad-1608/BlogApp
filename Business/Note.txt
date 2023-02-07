@@ -1,10 +1,17 @@
 ﻿Seherin tasklari:
-1) WriterLayout'da mesaj ve bildirimleri duzelt
-2) Admin panel bildirim yazmaq ve silmek
-3) Role bazli emeliyyatlar
-4) Mesajlarda reply funksiyasi
-4) Abune ve comment
+
+//En son merhele
+1) Social media dataazaya elave et
+2) Unvan telefon email databazaya elave et
+7) Loglama                                      //Bu gun
+8) Search   
+3) Role bazli emeliyyatlar                     // Sabah
+
+
+//Sonraki update
 5) Sifreni unuttum
 6) Register olanda testiq kodu gondermek
-7) Loglama
-8) Search
+
+
+
+

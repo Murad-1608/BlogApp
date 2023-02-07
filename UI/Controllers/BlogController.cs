@@ -30,6 +30,7 @@ namespace UI.Controllers
         public IActionResult Index()
         {
             var blogs = blogService.GetListWithCategory();
+            blogs.Reverse();
 
             return View(blogs);
         }
@@ -46,25 +47,25 @@ namespace UI.Controllers
 
             blogService.Update(blog);
 
-            return View(blog);
+            BlogAndCommentViewModel viewModel = new()
+            {
+                Blog = blog,
+                Comments = commentService.GetByBlogId(blog.Id)
+            };
+
+
+            return View(viewModel);
         }
 
         [HttpPost, Authorize]
         public IActionResult AddComment(Comment comment)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                comment.UserName = appuser.FullName;
-                comment.UserImage = appuser.Image;
-                comment.Status = true;
-                comment.BlogId = Convert.ToInt32(TempData["Id"]);
-                commentService.Add(comment);
-                int id = comment.BlogId;
-
-                return Ok();
-            }
-
-            return RedirectToAction("Login", "Auth");
+            comment.AppUserId = appuser.Id;
+            comment.Status = true;
+            comment.BlogId = Convert.ToInt32(TempData["Id"]);
+            commentService.Add(comment);
+            int id = comment.BlogId;
+            return RedirectToAction("BlogDetails", new { id = id });
         }
 
         [HttpGet]
@@ -165,7 +166,7 @@ namespace UI.Controllers
             }
             catch (Exception)
             {
-                return RedirectToAction("Writer","Blogs");
+                return RedirectToAction("Writer", "Blogs");
             }
 
 
