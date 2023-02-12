@@ -8,6 +8,7 @@ namespace Business.Abstract
         List<Message> GetReceiverMessage(int id);
         void Delete(int id);
         void Add(Message message);
+        Message GetByIdAll(int id);
 
     }
 }

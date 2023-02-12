@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Helper;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -51,8 +52,7 @@ namespace UI.Controllers
 
 
         public IActionResult Add()
-        {           
-
+        {
             ViewBag.Title = "Mesaj";
 
             return View();
@@ -84,19 +84,50 @@ namespace UI.Controllers
                 ModelState.AddModelError(nameof(model.Email), "Özünüzə mesaj ata bilmərsiniz");
                 return View(model);
             }
-            Message message = new Message();
-            message.SenderId = appuser.Id;
-            message.ReceiverId = receiver.Id;
-            message.Subject = model.Subject;
-            message.Content = model.Content;
-            message.Status = true;
-            messageService.Add(message);
-            return RedirectToAction("Send");
+
+            else
+            {
+                Message message = new Message();
+
+                if (model.File != null)
+                {
+                    message.File = SystemIOOperations.AddPhoto(model.File, "Files");
+                }
+
+                message.SenderId = appuser.Id;
+                message.ReceiverId = receiver.Id;
+                message.Subject = model.Subject;
+                message.Content = model.Content;
+                message.Status = true;
+                messageService.Add(message);
+                return RedirectToAction("Send");
+            }
+
         }
+
+        public IActionResult Reply(int id)
+        {
+            MessageModel model = new MessageModel()
+            {
+                Email = userManager.FindByIdAsync(id.ToString()).Result.Email
+            };
+
+            return View(model);
+        }
+
 
         public IActionResult Delete(int id)
         {
+            var message = messageService.GetByIdAll(id);
+
+            if (message.File != null)
+            {
+                SystemIOOperations.DeletePhoto("Files", message.File);
+            }
+
             messageService.Delete(id);
+
+
 
             return RedirectToAction(TempData["Panel"].ToString());
         }
@@ -108,6 +139,11 @@ namespace UI.Controllers
             for (int i = 0; i < sendbox.Count; i++)
             {
                 messageService.Delete(sendbox[i].Id);
+
+                if (sendbox[i].File != null)
+                {
+                    SystemIOOperations.DeletePhoto("Files", sendbox[i].File);
+                }
             }
 
             ViewBag.Title = "Mesaj";
@@ -121,10 +157,41 @@ namespace UI.Controllers
             for (int i = 0; i < inbox.Count; i++)
             {
                 messageService.Delete(inbox[i].Id);
+
+                if (inbox[i].File != null)
+                {
+                    SystemIOOperations.DeletePhoto("Files", inbox[i].File);
+                }
             }
 
             ViewBag.Title = "Mesaj";
             return RedirectToAction("Index".ToString());
+        }
+
+
+        public async Task<IActionResult> DownloadFile(string filePath)
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Files", filePath);
+            var memory = new MemoryStream();
+
+            try
+            {
+                using (var stream = new FileStream(path, FileMode.Open))
+                {
+
+                    await stream.CopyToAsync(memory);
+                }
+
+            }
+            catch (Exception)
+            {
+            }
+
+            memory.Position = 0;
+            var contentType = "APPLICATION/octet-stream";
+            var fileName = Path.GetFileName(path);
+
+            return File(memory, contentType, fileName);
         }
     }
 }

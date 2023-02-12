@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
                 <h3>Haqqımızda</h3>
-                <p>Haqqımızda məlumat almaq istəyirsənsə aşağıdakı butona klikləyə bilərsiniz..</p>
+                <p>Haqqımızda məlumat almaq istəyirsinizsə aşağıdakı butona klikləyə bilərsiniz..</p>
                 <div class="read">
                     <a href="/About/Index" class="btn btn-primary read-m">Daha çox məlumat</a>
                 </div>
@@ -19,12 +19,16 @@
             </div>
             <!-- subscribe -->
 
-            <div class="col-lg-4 subscribe-main footer-grid-agileits-w3ls text-left">
-                <h2>Abunə ol</h2>
-                <partial name="~/Views/NewsLetter/SubscribeMail.cshtml"/>
+           @* <div class="col-lg-4 subscribe-main footer-grid-agileits-w3ls text-left">               
               
                 <!-- //subscribe -->
-            </div>
+                <h2>Abunə ol</h2>
+                @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
+
+
+            </div>*@
+
+
         </div>
         <!-- footer -->
         <div class="footer-cpy text-center">

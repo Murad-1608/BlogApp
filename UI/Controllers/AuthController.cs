@@ -90,7 +90,7 @@ namespace UI.Controllers
                 }
             }
 
-            ModelState.AddModelError(nameof(model.Password), "İstifadəçi adı və parol yanlışdır");
+            ModelState.AddModelError(nameof(model.Password), "İstifadəçi adı və ya parol yanlışdır");
             return View(model);
         }
 

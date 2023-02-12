@@ -11,7 +11,7 @@
         {
                 <li>
                                 <div class="dropdown-messages-box">
-                                    <a class="dropdown-item float-left" href="profile.html">
+                                    <a class="dropdown-item float-left" asp-controller="Message" asp-action="ViewReceiveMessage" asp-route-id="@item.Id">
                                         <img alt="image" class="rounded-circle" src="~/Images/User/@item.Sender.Image">
                                     </a>
                                     <div class="media-body">

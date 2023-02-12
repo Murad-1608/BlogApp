@@ -12,6 +12,7 @@ namespace Entity.Concrete
         public int ReceiverId { get; set; }
         public string Subject { get; set; }
         public string Content { get; set; }
+        public string? File { get; set; }
         public DateTime CreateDate { get; set; }
 
         public AppUser Sender { get; set; }

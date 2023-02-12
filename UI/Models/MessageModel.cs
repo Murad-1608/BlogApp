@@ -11,5 +11,7 @@ namespace UI.Models
         public string Subject { get; set; }
         [Required(ErrorMessage = "Mesaj yazın")]
         public string Content { get; set; }
+
+        public IFormFile? File { get; set; }
     }
 }
