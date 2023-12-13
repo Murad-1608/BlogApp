@@ -6,44 +6,44 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
- <div class="wrapper wrapper-content animated fadeInRight">
-     <div class="row">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
         @foreach (var item in Model)
         {
-                    <div class="col-md-3">
-                            <div class="ibox">
-                                <div class="ibox-content product-box">
+            <div class="col-md-3">
+                <div class="ibox">
+                    <div class="ibox-content product-box">
 
-                                    <div class="product-imitation">
-                                        <img src="~/Images/Blog/@item.Image" style="width:200px; height:150px"/>
-                                    </div>
-                                    <div class="product-desc">
-                                        <span class="product-price">
+                        <div class="product-imitation">
+                            <img src="~/Images/Blog/@item.Image" style="width:200px; height:150px" />
+                        </div>
+                        <div class="product-desc">
+                            <span class="product-price">
                                 @item.Seen
-                                        </span>
-                                        <small class="text-muted">@item.Category.Name</small>
-                                        <a href="/Blog/BlogDetails/@item.Id" class="product-name"> @item.Title</a>
+                            </span>
+                            <small class="text-muted">@item.Category.Name</small>
+                            <a href="/Blog/BlogDetails/@item.Id" class="product-name"> @item.Title</a>
 
-                                        <div class="small m-t-xs">
-                                @item.Content.Substring(0,25) ...
-                                        </div>
-                                        <div class="m-t text-righ">
+                            <div class="small m-t-xs">
+                                @item.Content.Substring(0, 25) ...
+                            </div>
+                            <div class="m-t text-righ">
 
-                                                    <a href="/Blog/BlogDetails/@item.Id" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                                                    <a asp-controller="Blog" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-xs btn-outline btn-danger" style="float:right">Sil</a>
+                                <a href="/Blog/BlogDetails/@item.Id" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                                <a asp-controller="Blog" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-xs btn-outline btn-danger" style="float:right">Sil</a>
 
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
         }
 
 
 
 
 
-         </div>
-     </div>
+    </div>
+</div>
 
- <br />
+<br />

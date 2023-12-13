@@ -6,43 +6,43 @@
 
 
 <div class="card-body">
-                    <h4 class="card-title">Profil üzərində dəyişiklik et</h4>
-                    <div class="circular--landscape">
-                                <img src="~/Images/User/@Model.CurrentImage" class="img-fluid" alt="" style="width:150px; height:130px; border-radius:50%">                            
-                        </div>
-                    
-                        <br />
-                    <form class="forms-sample" asp-controller="Writer" asp-action="Update" enctype="multipart/form-data">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Email</label>
-                        <input type="text" asp-for="Email" class="form-control" id="exampleInputName1" placeholder="Email">
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Ad və soyad</label>
-                        <input type="text" asp-for="FullName" class="form-control" id="exampleInputName1" placeholder="Ad və soyad">
-                        <span asp-validation-for="FullName" class="text-danger"></span>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">İstifadəçi adı</label>
-                        <input type="text" asp-for="UserName" class="form-control" id="exampleInputName1" placeholder="İstifadəçi adı">
-                        <span asp-validation-for="UserName" class="text-danger"></span>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Telefon</label>
-                        <input type="text" asp-for="PhoneNumber" class="form-control" id="exampleInputName1" placeholder="Telefon">
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputName1">Şəkil</label>
-                        <input type="file" asp-for="Image" class="form-control">
-                        <span class="text-warning">Şəkili dəyişdirmək istəmirsinizsə boş qoyun</span><br />
-                        <span class="text-danger" asp-validation-for="Image"></span>
-                      </div>
-                      <button type="submit" class="btn btn-primary btn-sm">Təstiqlə</button>
-                      <a asp-action="PasswordChange" asp-controller="Writer" class="btn btn-white btn-sm">Parolu dəyiş</a>
-                      <a asp-action="Update" asp-controller="Writer" class="btn btn-white btn-sm">Ləğv et</a>
+    <h4 class="card-title">Profil üzərində dəyişiklik et</h4>
+    <div class="circular--landscape">
+        <img src="~/Images/User/@Model.CurrentImage" class="img-fluid" alt="" style="width:150px; height:130px; border-radius:50%">
+    </div>
 
-                    </form>
-                  </div>
+    <br />
+    <form class="forms-sample" asp-controller="Writer" asp-action="Update" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label for="exampleInputName1">Email</label>
+            <input type="text" asp-for="Email" class="form-control" id="exampleInputName1" placeholder="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputName1">Ad və soyad</label>
+            <input type="text" asp-for="FullName" class="form-control" id="exampleInputName1" placeholder="Ad və soyad">
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputName1">İstifadəçi adı</label>
+            <input type="text" asp-for="UserName" class="form-control" id="exampleInputName1" placeholder="İstifadəçi adı">
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputName1">Telefon</label>
+            <input type="text" asp-for="PhoneNumber" class="form-control" id="exampleInputName1" placeholder="Telefon">
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputName1">Şəkil</label>
+            <input type="file" asp-for="Image" class="form-control">
+            <span class="text-warning">Şəkili dəyişdirmək istəmirsinizsə boş qoyun</span><br />
+            <span class="text-danger" asp-validation-for="Image"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">Təstiqlə</button>
+        <a asp-action="PasswordChange" asp-controller="Writer" class="btn btn-white btn-sm">Parolu dəyiş</a>
+        <a asp-action="Update" asp-controller="Writer" class="btn btn-white btn-sm">Ləğv et</a>
+
+    </form>
+</div>

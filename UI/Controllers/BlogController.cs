@@ -109,7 +109,7 @@ namespace UI.Controllers
             {
                 ModelState.AddModelError(nameof(viewModel.BlogModel.Image), "Xahiş olunur şəkil seçin");
             }
-            else if (viewModel.BlogModel.Image.ContentType == "image/jpeg")
+            else if (viewModel.BlogModel.Image.ContentType == "image/jpeg" || viewModel.BlogModel.Image.ContentType == "image/png")
             {
                 var writer = userManager.FindByNameAsync(User.Identity.Name).Result;
 
@@ -130,7 +130,7 @@ namespace UI.Controllers
             }
             else
             {
-                ModelState.AddModelError(nameof(viewModel.BlogModel.Image), "Xahiş olunur şəkil formatını jpeg seçin");
+                ModelState.AddModelError(nameof(viewModel.BlogModel.Image), "Xahiş olunur şəkil formatını düzgün seçin");
             }
 
             List<SelectListItem> categories = (from i in categoryService.GetAll().ToList()

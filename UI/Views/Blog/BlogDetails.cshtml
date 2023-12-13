@@ -34,7 +34,7 @@
                     <h3>
                         <a asp-controller="Blog" asp-action="BlogDetails" asp-route-id="@Model.Blog.Id">@Model.Blog.Title </a>
                     </h3>
-                    <p>
+                    <p style="white-space: pre-line">
                         @Model.Blog.Content
                     </p>
                     <a asp-controller="Blog" asp-action="Index" class="btn btn-primary read-m">Bütün bloqlar</a>
@@ -44,31 +44,31 @@
                 <div class="comment-top">
                     @if (Model.Comments.Count == 0)
                     {
-                <h4>Rəy yoxdur. İlk rəyi sən yaz</h4>
+                        <h4>Rəy yoxdur. İlk rəyi sən yaz</h4>
 
                     }
                     else
                     {
-                <h4>Rəylər</h4>
+                        <h4>Rəylər</h4>
                     }
 
                     @foreach (var item in Model.Comments)
                     {
-                <div class="media">
-                    <img src="~/Images/User/@item.AppUser.Image" alt="" class="img-fluid" style="width:70px; height:70px"/>
-                    <div class="media-body">
+                        <div class="media">
+                            <img src="~/Images/User/@item.AppUser.Image" alt="" class="img-fluid" style="width:70px; height:70px" />
+                            <div class="media-body">
 
-                        <h5 class="mt-0">@item.AppUser.FullName</h5>
-                        <p>
+                                <h5 class="mt-0">@item.AppUser.FullName</h5>
+                                <p>
                                     @item.Content
-                        </p>
-                    </div>
-                </div>
+                                </p>
+                            </div>
+                        </div>
                     }
 
 
 
-</div>
+                </div>
 
                 <partial name="~/PartialViews/BlogDetail/AddCommentPartial.cshtml" />
 
@@ -87,7 +87,7 @@
 
                     @await Component.InvokeAsync("GetCategories")
 
-                    @await Component.InvokeAsync("WriterLastBlogs",Model.Blog.AppUserId)
+                    @await Component.InvokeAsync("WriterLastBlogs", Model.Blog.AppUserId)
 
                     @await Component.InvokeAsync("LastestBlog")
 

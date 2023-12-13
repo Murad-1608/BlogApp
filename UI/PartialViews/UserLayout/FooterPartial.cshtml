@@ -3,35 +3,20 @@
 
 <footer>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
-                <h3>Haqqımızda</h3>
-                <p>Haqqımızda məlumat almaq istəyirsinizsə aşağıdakı butona klikləyə bilərsiniz..</p>
-                <div class="read">
-                    <a href="/About/Index" class="btn btn-primary read-m">Daha çox məlumat</a>
-                </div>
-            </div>
-            <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
-
-                @await Component.InvokeAsync("Last3Blogs")
-
-
-            </div>
-            <!-- subscribe -->
-
-           @* <div class="col-lg-4 subscribe-main footer-grid-agileits-w3ls text-left">               
-              
-                <!-- //subscribe -->
-                <h2>Abunə ol</h2>
-                @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
-
-
-            </div>*@
-
-
-        </div>
         <!-- footer -->
         <div class="footer-cpy text-center">
+
+            <div class="container p-4 pb-0">
+                <section class="">
+                    <p class="d-flex justify-content-center align-items-center">
+                        <a asp-controller="Auth" asp-action="Login" class="btn btn-outline-light btn-rounded">
+                            Daxil ol
+                        </a>
+                    </p>
+                </section>
+                <!-- Section: CTA -->
+            </div>
+
 
             @await Component.InvokeAsync("SocialMediaFooter")
 

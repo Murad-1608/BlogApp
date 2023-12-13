@@ -16,7 +16,7 @@ namespace UI.Controllers
         {
             this.messageService = messageService;
         }
-        public IActionResult Index()
+        public IActionResult Index() 
         {
             TempData["Panel"] = "Index";
             ViewBag.Title = "Mesaj";

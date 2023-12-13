@@ -9,7 +9,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=sql8004.site4now.net; Database=db_a9458d_blogappdb; Integrated Security=false; user id=db_a9458d_blogappdb_admin; password=murad2701");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb; Database=BlogSiteNewDb; Integrated Security=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
